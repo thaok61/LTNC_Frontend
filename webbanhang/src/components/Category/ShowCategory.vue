@@ -1,13 +1,23 @@
 <template lang="html">
 
-  <section class="show-category">
-    <h1>show-category Component</h1>
-  </section>
+  <div id="app">
+  <v-app id="inspire">
+    <v-data-table
+      :headers="headers"
+      :items="categories"
+      :sort-by="['categoryName', 'categoryImage']"
+      :sort-desc="[false, true]"
+      multi-sort
+      class="elevation-1"
+    ></v-data-table>
+  </v-app>
+
+</div>
 
 </template>
 
 <script lang="js">
-
+  import axios from 'axios'
   export default  {
     name: 'show-category',
     props: [],
@@ -16,8 +26,26 @@
     },
     data () {
       return {
-
+        headers: [
+        {
+          text: 'STT',
+          align: 'start',
+          sortable: false,
+          value: 'categoryId',
+        },
+        { text: 'Tên Loại Sản Phẩm', value: 'categoryName' },
+        { text: 'Ảnh', value: 'categoryImage' },
+        { text: 'Mô Tả', value: 'description' },
+      ],
+      categories: [],
       }
+    },
+    created() {
+      axios.get('http://172.16.1.41/api/category').then(categories=> {
+        console.log(categories.data);
+        
+        this.categories = categories.data;
+      })
     },
     methods: {
 
