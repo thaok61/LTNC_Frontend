@@ -18,6 +18,7 @@
 
 <script lang="js">
   import axios from 'axios'
+  import {mainurl} from './src/constant.js'
   export default  {
     name: 'show-category',
     props: [],
@@ -41,7 +42,7 @@
       }
     },
     created() {
-      axios.get('http://172.16.1.41/api/category').then(categories=> {
+      axios.get(this.mainurl + '/api/category').then(categories=> {
         console.log(categories.data);
         
         this.categories = categories.data;
