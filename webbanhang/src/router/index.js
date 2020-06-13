@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import CategoryRoutes from '../router/category/category'
+import ProductRoutes from '../router/product/product'
+
 
 Vue.use(VueRouter)
 
@@ -20,7 +22,8 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
 
-  ...CategoryRoutes
+  ...CategoryRoutes,
+  ...ProductRoutes
 ]
 
 const router = new VueRouter({
