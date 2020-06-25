@@ -1,7 +1,9 @@
 <template lang="html">
 
   <section class="show-order">
-    <h1>show-order Component</h1>
+    <div v-for="product in listProducts">
+    <h1>product.productName</h1>
+    </div>
   </section>
 
 </template>
@@ -10,7 +12,7 @@
 
   export default  {
     name: 'show-order',
-    props: [],
+    props: ['listProducts'],
     mounted () {
 
     },
